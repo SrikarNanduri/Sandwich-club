@@ -14,11 +14,17 @@
             android:id="@+id/image_iv"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/sandwich_picture_content_description"
             android:scaleType="centerCrop"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="48dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
@@ -107,7 +113,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ingredients_lable"
-            tools:text="\u2022 Toasted bread \n\u2022 Turkey or chicken \n\u2022 Bacon \n\u2022 Lettuce \n\u2022 Tomato \n\u2022 Mayonnaise" />
+            tools:text="\u25BA Toasted bread \n\u25BA Turkey or chicken \n\u25BA Bacon \n\u25BA Lettuce \n\u25BA Tomato \n\u25BA Mayonnaise" />
 
         <TextView
             android:id="@+id/also_known_tv"

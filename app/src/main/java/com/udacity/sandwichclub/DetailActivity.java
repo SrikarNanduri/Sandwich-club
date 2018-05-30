@@ -132,14 +132,14 @@ public class DetailActivity extends AppCompatActivity {
         // set Text to Ingredients
         if (sandwich.getIngredients() != null && sandwich.getIngredients().size() > 0) {
             StringBuilder ingredientsStringBuilder = new StringBuilder();
-            ingredientsStringBuilder.append("\u2022 ");
+            ingredientsStringBuilder.append("\u25BA ");
             //appends the first  item in the list
             ingredientsStringBuilder.append(sandwich.getIngredients().get(0));
 
             // if there are more this loop will append the to the first one
             for (int i = 1; i < sandwich.getIngredients().size(); i++) {
                 ingredientsStringBuilder.append("\n");
-                ingredientsStringBuilder.append("\u2022 ");
+                ingredientsStringBuilder.append("\u25BA ");
                 ingredientsStringBuilder.append(sandwich.getIngredients().get(i));
             }
             mIngredientTv.setText(ingredientsStringBuilder.toString());
