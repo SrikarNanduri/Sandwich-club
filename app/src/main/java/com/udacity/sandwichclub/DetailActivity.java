@@ -6,9 +6,12 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
@@ -26,13 +29,14 @@ public class DetailActivity extends AppCompatActivity {
     private TextView mDescriptionLable;
     private TextView mIngredientTv;
     private TextView mIngredientLable;
+    private ProgressBar mLoadingIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ImageView ingredientsIv = findViewById(R.id.image_iv);
+        ImageView ItemIv = findViewById(R.id.image_iv);
         mAlsoKnownAsTv = findViewById(R.id.also_known_tv);
         mAlsoKnownAsLabel = findViewById(R.id.alsoKnownAs_lable);
         mOriginTv = findViewById(R.id.origin_tv);
@@ -41,6 +45,7 @@ public class DetailActivity extends AppCompatActivity {
         mDescriptionLable = findViewById(R.id.description_lable);
         mIngredientTv = findViewById(R.id.ingredients_tv);
         mIngredientLable = findViewById(R.id.ingredients_lable);
+        mLoadingIndicator =  findViewById(R.id.pb_loading_indicator);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -64,9 +69,20 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         populateUI(sandwich);
+        mLoadingIndicator.setVisibility(View.VISIBLE);
         Picasso.with(this)
                 .load(sandwich.getImage())
-                .into(ingredientsIv);
+                .into(ItemIv, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        mLoadingIndicator.setVisibility(View.GONE);
+                    }
+
+                    @Override
+                    public void onError() {
+
+                    }
+                });
 
         setTitle(sandwich.getMainName());
     }
